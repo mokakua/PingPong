@@ -37,6 +37,7 @@ __published:	// IDE-managed Components
         TLabel *countdownLabel;
         TLabel *Label4;
         TLabel *hitsLabel;
+        TShape *Shape2;
         void __fastcall ballTimerTimer(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall paddleRightUpTimerTimer(TObject *Sender);

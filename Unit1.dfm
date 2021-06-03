@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 339
-  Top = 99
+  Left = 363
+  Top = 135
   Width = 1393
   Height = 812
   Caption = 'Form1'
@@ -18,6 +18,14 @@ object Form1: TForm1
   OnKeyUp = FormKeyUp
   PixelsPerInch = 96
   TextHeight = 13
+  object Shape1: TShape
+    Left = 0
+    Top = 0
+    Width = 1377
+    Height = 773
+    Align = alClient
+    Brush.Color = clMoneyGreen
+  end
   object gameArea: TShape
     Left = 0
     Top = 0
@@ -27,8 +35,8 @@ object Form1: TForm1
     Brush.Color = clMoneyGreen
   end
   object ball: TShape
-    Left = 632
-    Top = 344
+    Left = 584
+    Top = 360
     Width = 30
     Height = 30
     Brush.Color = clRed
@@ -42,11 +50,11 @@ object Form1: TForm1
     Brush.Color = clGreen
   end
   object paddleRight: TShape
-    Left = 1296
+    Left = 1304
     Top = 312
     Width = 30
     Height = 150
-    Brush.Color = clGreen
+    Brush.Color = clAqua
   end
   object lPointsLabel: TLabel
     Left = 120
@@ -202,7 +210,7 @@ object Form1: TForm1
     ParentFont = False
   end
   object countdownLabel: TLabel
-    Left = 512
+    Left = 520
     Top = 128
     Width = 222
     Height = 447
@@ -251,19 +259,50 @@ object Form1: TForm1
     ParentFont = False
   end
   object Shape2: TShape
-    Left = 856
-    Top = 312
+    Left = 832
+    Top = 416
     Width = 65
     Height = 65
     Brush.Color = clRed
     Shape = stSquare
+    Visible = False
+  end
+  object Label5: TLabel
+    Left = 168
+    Top = 656
+    Width = 150
+    Height = 36
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'BSpeed'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+  end
+  object BSpeedLabel: TLabel
+    Left = 168
+    Top = 704
+    Width = 150
+    Height = 36
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'BSpeed'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clWindowText
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
   end
   object startButton: TButton
-    Left = 552
+    Left = 480
     Top = 232
-    Width = 169
+    Width = 305
     Height = 73
-    Caption = 'START'
+    Caption = 'START(Enter)'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clRed
     Font.Height = -40

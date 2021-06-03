@@ -11,7 +11,7 @@
 TForm1 *Form1;
 //---------------------------------------------------------------------------
 __fastcall TForm1::TForm1(TComponent* Owner)
-        : TForm(Owner), MAX_BALL_SPEED(20), MIN_BALL_SPEED(8), PADDLE_SPEED(8),
+        : TForm(Owner), MAX_BALL_SPEED(25), MIN_BALL_SPEED(8), PADDLE_SPEED(8),
         PADDLE_TO_BORDER_DISTANCE(80), MAX_SPEED_RATIO(2)
 {
         leftPaddleSpeed = PADDLE_SPEED;
@@ -94,6 +94,7 @@ void TForm1::setStartBallSpeed(){
         randomize();
         float startSpeedRatio = (rand()%(MAX_SPEED_RATIO*20+1)-MAX_SPEED_RATIO*10)/10.0;
         xSpeed = rand()%2;
+        ballSpeed = MIN_BALL_SPEED;
         setBallSpeed(startSpeedRatio);
 
 }
@@ -204,7 +205,7 @@ void __fastcall TForm1::ballTimerTimer(TObject *Sender)
 
         }else if(xSpeed >0 && doesHitPaddle(paddleRight)){
                 ballHits++;
-                if(ballHits%5==0 && ballHits>0 && ballSpeed<MAX_BALL_SPEED){
+                if(ballHits%1==0 && ballHits>0 && ballSpeed<MAX_BALL_SPEED){
                         ballSpeed++;
                 }
                 setBallSpeed(calcBallSpeedRatio(paddleRight));
@@ -212,15 +213,14 @@ void __fastcall TForm1::ballTimerTimer(TObject *Sender)
 
         }else if (xSpeed <0 && doesHitPaddle(paddleLeft)){
                 ballHits++;
-                if(ballHits%5==0 && ballHits>0 && ballSpeed<MAX_BALL_SPEED){
+                if(ballHits%1==0 && ballHits>0 && ballSpeed<MAX_BALL_SPEED){
                         ballSpeed++;
                 }
                 setBallSpeed(calcBallSpeedRatio(paddleLeft));
         }
 
-
-
         hitsLabel->Caption = ballHits;
+        BSpeedLabel->Caption = ballSpeed;
 
 }
 //---------------------------------------------------------------------------
@@ -309,6 +309,7 @@ void __fastcall TForm1::startButtonClick(TObject *Sender)
 void __fastcall TForm1::dalejButtonClick(TObject *Sender)
 {
         FormCreate(Application);
+        setStartBallSpeed();
         startTheBall();
 }
 //---------------------------------------------------------------------------

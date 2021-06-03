@@ -38,6 +38,9 @@ __published:	// IDE-managed Components
         TLabel *Label4;
         TLabel *hitsLabel;
         TShape *Shape2;
+        TShape *Shape1;
+        TLabel *Label5;
+        TLabel *BSpeedLabel;
         void __fastcall ballTimerTimer(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall paddleRightUpTimerTimer(TObject *Sender);

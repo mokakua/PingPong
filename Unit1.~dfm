@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 744
-  Top = 61
+  Left = 339
+  Top = 99
   Width = 1393
   Height = 812
   Caption = 'Form1'
@@ -249,6 +249,14 @@ object Form1: TForm1
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ParentFont = False
+  end
+  object Shape2: TShape
+    Left = 856
+    Top = 312
+    Width = 65
+    Height = 65
+    Brush.Color = clRed
+    Shape = stSquare
   end
   object startButton: TButton
     Left = 552
