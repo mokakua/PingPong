@@ -30,6 +30,8 @@ __fastcall TForm1::TForm1(TComponent* Owner)
         keyLeftUp = 0x41;
         keyLeftDown = 0x5A;
         whoHitsPerk = NULL;
+        isCannonBallOn = false;
+        cannonBallTime = 0;
 }
 //---------------------------------------------------------------------------
 void __fastcall TForm1::FormCreate(TObject *Sender)
@@ -57,6 +59,9 @@ void TForm1::finishPerks(){
         perkShape->Visible = false;
         paddleLeft->Height = PADDLE_LENGTH;
         paddleRight->Height = PADDLE_LENGTH;
+        perkTimeLabel->Visible = false;
+        isCannonBallOn = false;
+        cannonTimer->Enabled = false;
 
 }
 //---------------------------------------------------------------------------
@@ -88,6 +93,9 @@ void TForm1::prepareIconsLayout(){
 
         ball->Left = gameArea->Width/2 - ball->Width/2;
         ball->Top = gameArea->Height/2 - ball->Height/2;
+
+        perkTimeLabel->Left = gameArea->Width/2 - perkTimeLabel->Width/2;
+        perkTimeLabel->Top = gameArea->Height/2 - perkTimeLabel->Height/2;
 }
 //---------------------------------------------------------------------------
 void TForm1::swap(int& a, int& b){
@@ -234,7 +242,8 @@ void TForm1::startTheBall(){
 //---------------------------------------------------------------------------
 void TForm1::perkTurnOn(){
         randomize();
-        perkNumber = rand()%3+1;
+        perkNumber = 2;
+        //perkNumber = rand()%3+1;
         switch (perkNumber){
 
         case 1:
@@ -307,12 +316,13 @@ void __fastcall TForm1::ballTimerTimer(TObject *Sender)
                         perkTime = 0;
                         perkTimer->Enabled = true;
                         PerkNumberLabel->Caption = perkNumber;
+                        perkTimeLabel->Visible = true;
+                        perkTimeLabel->Caption = PERK_DURATION;
                         switch (perkNumber){
                                 case 1:{
                                         perk1DrunkMode();
                                 }break;
                                 case 2:{
-                                        perk2CannonBall();
                                 }break;
                                 case 3:{
                                         perk3Elongation();
@@ -339,7 +349,11 @@ void __fastcall TForm1::ballTimerTimer(TObject *Sender)
                 if(ballHits%hitsAfterSpeeedIncreases==0 && ballHits>0 && ballSpeed<MAX_BALL_SPEED){
                         ballSpeed++;
                 }
-                setBallSpeed(calcBallSpeedRatio(paddleRight));
+                if (perkNumber==2 && whoHitsPerk == 'r'){
+                        perk2CannonBall();
+                }else{
+                        setBallSpeed(calcBallSpeedRatio(paddleRight));
+                }
 
 
         }else if (xSpeed <0 && doesHitPaddle(paddleLeft)){
@@ -347,7 +361,11 @@ void __fastcall TForm1::ballTimerTimer(TObject *Sender)
                 if(ballHits%hitsAfterSpeeedIncreases==0 && ballHits>0 && ballSpeed<MAX_BALL_SPEED){
                         ballSpeed++;
                 }
-                setBallSpeed(calcBallSpeedRatio(paddleLeft));
+                if (perkNumber==2 && whoHitsPerk == 'l'){
+                        perk2CannonBall();
+                }else{
+                        setBallSpeed(calcBallSpeedRatio(paddleLeft));
+                }
         }
 
         hitsLabel->Caption = ballHits;
@@ -367,7 +385,24 @@ void TForm1::perk1DrunkMode(){
 }
 //---------------------------------------------------------------------------
 void TForm1::perk2CannonBall(){
-        perk1DrunkMode();
+        cannonBallTime = 3;
+        cannonTimer->Enabled = true;
+        perkTimer->Enabled = false;
+        isCannonBallOn = true;
+        ballTimer->Enabled = false;
+        perkTimeLabel->Caption = cannonBallTime;
+        ySpeed = 0;
+        if (whoHitsPerk == 'l'){
+                leftPaddleSpeed = PADDLE_SPEED*1.5;
+                ball->Top = paddleLeft->Top+paddleLeft->Height/2 - ball->Height/2;
+                ball->Left = paddleLeft->Left + paddleLeft->Width;
+                xSpeed = 50;
+        }else{
+                rightPaddleSpeed = PADDLE_SPEED*1.5;
+                ball->Top = paddleRight->Top+paddleRight->Height/2 - ball->Height/2;
+                ball->Left = paddleRight->Left - ball->Width;
+                xSpeed = -50;
+        }
 }
 //---------------------------------------------------------------------------
 void TForm1::perk3Elongation(){
@@ -382,6 +417,9 @@ void __fastcall TForm1::paddleRightUpTimerTimer(TObject *Sender)
 {
         if (paddleRight->Top >= 5){
                 paddleRight->Top -= rightPaddleSpeed;
+                if (isCannonBallOn && whoHitsPerk == 'r'){
+                        ball->Top -= rightPaddleSpeed;
+                }
         }
 }
 //---------------------------------------------------------------------------
@@ -390,6 +428,9 @@ void __fastcall TForm1::paddleRightDownTimerTimer(TObject *Sender)
 {
         if (paddleRight->Top + paddleRight->Height <= gameArea->Height - 5){
                 paddleRight->Top += rightPaddleSpeed;
+                if (isCannonBallOn && whoHitsPerk == 'r'){
+                        ball->Top += rightPaddleSpeed;
+                }
         }
 }
 //---------------------------------------------------------------------------
@@ -397,6 +438,9 @@ void __fastcall TForm1::paddleLeftUpTimerTimer(TObject *Sender)
 {
         if (paddleLeft->Top >= 5){
                 paddleLeft->Top -= leftPaddleSpeed;
+                if (isCannonBallOn && whoHitsPerk == 'l'){
+                        ball->Top -= leftPaddleSpeed;
+                }
         }
 }
 //---------------------------------------------------------------------------
@@ -405,6 +449,9 @@ void __fastcall TForm1::paddleLeftDownTimerTimer(TObject *Sender)
 {
         if (paddleLeft->Top + paddleLeft->Height <= gameArea->Height - 5){
                 paddleLeft->Top += leftPaddleSpeed;
+                if (isCannonBallOn && whoHitsPerk == 'l'){
+                        ball->Top += leftPaddleSpeed;
+                }
         }
 }
 //---------------------------------------------------------------------------
@@ -475,6 +522,18 @@ void __fastcall TForm1::koniecButtonClick(TObject *Sender)
 void __fastcall TForm1::perkTimerTimer(TObject *Sender)
 {
         perkTime++;
+        perkTimeLabel->Caption =  PERK_DURATION-perkTime;
+}
+//---------------------------------------------------------------------------
+
+void __fastcall TForm1::cannonTimerTimer(TObject *Sender)
+{
+        cannonBallTime--;
+        perkTimeLabel->Caption = cannonBallTime;
+        if(cannonBallTime <= 0){
+                finishPerks();
+                ballTimer->Enabled = true;
+        }
 }
 //---------------------------------------------------------------------------
 

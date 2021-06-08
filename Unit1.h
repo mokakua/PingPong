@@ -43,6 +43,7 @@ __published:	// IDE-managed Components
         TLabel *BSpeedLabel;
         TTimer *perkTimer;
         TLabel *perkTimeLabel;
+        TTimer *cannonTimer;
         void __fastcall ballTimerTimer(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall paddleRightUpTimerTimer(TObject *Sender);
@@ -57,6 +58,7 @@ __published:	// IDE-managed Components
         void __fastcall dalejButtonClick(TObject *Sender);
         void __fastcall koniecButtonClick(TObject *Sender);
         void __fastcall perkTimerTimer(TObject *Sender);
+        void __fastcall cannonTimerTimer(TObject *Sender);
 private:	// User declarations
 
         const int MIN_BALL_SPEED;
@@ -76,6 +78,7 @@ private:	// User declarations
         bool gameStarted;
         bool perkOn;
         int perkTime;
+        int cannonBallTime;
         int perkSpeed;
         int perkNumber;
         const int PERK_DURATION;
@@ -84,6 +87,7 @@ private:	// User declarations
         int keyLeftUp;
         int keyLeftDown;
         char whoHitsPerk;
+        bool isCannonBallOn;
 
         void swap (int& a, int& b);
         void setBallSpeed(float speedRatio);

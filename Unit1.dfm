@@ -313,6 +313,7 @@ object Form1: TForm1
     ParentColor = False
     ParentFont = False
     Transparent = True
+    Visible = False
   end
   object startButton: TButton
     Left = 480
@@ -403,5 +404,11 @@ object Form1: TForm1
     OnTimer = perkTimerTimer
     Left = 40
     Top = 120
+  end
+  object cannonTimer: TTimer
+    Enabled = False
+    OnTimer = cannonTimerTimer
+    Left = 40
+    Top = 152
   end
 end

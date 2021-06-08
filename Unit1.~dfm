@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 288
-  Top = 48
+  Left = 293
+  Top = 127
   Width = 1393
   Height = 812
   Caption = 'Form1'
@@ -87,8 +87,8 @@ object Form1: TForm1
     Transparent = True
   end
   object ball: TShape
-    Left = 624
-    Top = 336
+    Left = 520
+    Top = 560
     Width = 30
     Height = 30
     Brush.Color = clPurple
@@ -297,6 +297,24 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
   end
+  object perkTimeLabel: TLabel
+    Left = 632
+    Top = 352
+    Width = 18
+    Height = 37
+    Alignment = taCenter
+    Caption = '8'
+    Color = clRed
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -32
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    Transparent = True
+    Visible = False
+  end
   object startButton: TButton
     Left = 480
     Top = 232
@@ -386,5 +404,11 @@ object Form1: TForm1
     OnTimer = perkTimerTimer
     Left = 40
     Top = 120
+  end
+  object cannonTimer: TTimer
+    Enabled = False
+    OnTimer = cannonTimerTimer
+    Left = 40
+    Top = 152
   end
 end
