@@ -23,24 +23,26 @@ __published:	// IDE-managed Components
         TTimer *paddleRightDownTimer;
         TLabel *lPointsLabel;
         TLabel *rPointsLabel;
-        TLabel *SpeedRatio;
+        TLabel *PerkNumber;
         TLabel *lLabel;
         TLabel *Label3;
         TLabel *Label2;
         TLabel *Label1;
         TLabel *yLabel;
         TLabel *xLabel;
-        TLabel *sRatio;
+        TLabel *PerkNumberLabel;
         TButton *startButton;
         TButton *dalejButton;
         TButton *koniecButton;
         TLabel *countdownLabel;
         TLabel *Label4;
         TLabel *hitsLabel;
-        TShape *Shape2;
+        TShape *perkShape;
         TShape *Shape1;
         TLabel *Label5;
         TLabel *BSpeedLabel;
+        TTimer *perkTimer;
+        TLabel *perkTimeLabel;
         void __fastcall ballTimerTimer(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall paddleRightUpTimerTimer(TObject *Sender);
@@ -54,10 +56,12 @@ __published:	// IDE-managed Components
         void __fastcall startButtonClick(TObject *Sender);
         void __fastcall dalejButtonClick(TObject *Sender);
         void __fastcall koniecButtonClick(TObject *Sender);
+        void __fastcall perkTimerTimer(TObject *Sender);
 private:	// User declarations
 
         const int MIN_BALL_SPEED;
         const int MAX_BALL_SPEED;
+        const int PADDLE_LENGTH;
         int ballSpeed;
         const int PADDLE_SPEED;
         int leftPaddleSpeed;
@@ -70,11 +74,24 @@ private:	// User declarations
         float xSpeed;
         float ySpeed;
         bool gameStarted;
+        bool perkOn;
+        int perkTime;
+        int perkSpeed;
+        int perkNumber;
+        const int PERK_DURATION;
+        int keyRightUp;
+        int keyRightDown;
+        int keyLeftUp;
+        int keyLeftDown;
+        char whoHitsPerk;
 
+        void swap (int& a, int& b);
         void setBallSpeed(float speedRatio);
         float calcBallSpeedRatio(TShape* paddle);
         bool doesHitPaddle(TShape* paddle);
-        bool doesHitWall();
+        bool doesPerkHitWall();
+        bool doesBallHitWall();
+        bool doesBallHitPerkShape();
         bool isFail();
         void pauseGameAfterFail();
         void timersOff();
@@ -82,6 +99,13 @@ private:	// User declarations
         void setStartBallSpeed();
         void prepareIconsLayout();
         void startTheBall();
+        void perkTurnOn();
+        void perk1DrunkMode();
+        void perk2CannonBall();
+        void perk3Elongation();
+        void finishPerks();
+
+
 
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);

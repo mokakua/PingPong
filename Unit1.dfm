@@ -1,6 +1,6 @@
 object Form1: TForm1
-  Left = 363
-  Top = 135
+  Left = 293
+  Top = 127
   Width = 1393
   Height = 812
   Caption = 'Form1'
@@ -34,27 +34,40 @@ object Form1: TForm1
     Align = alClient
     Brush.Color = clMoneyGreen
   end
-  object ball: TShape
-    Left = 584
-    Top = 360
-    Width = 30
-    Height = 30
-    Brush.Color = clRed
-    Shape = stCircle
+  object countdownLabel: TLabel
+    Left = 528
+    Top = 104
+    Width = 222
+    Height = 447
+    Alignment = taCenter
+    Caption = '3'
+    Color = clMoneyGreen
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clNavy
+    Font.Height = -400
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    Transparent = True
+    Layout = tlCenter
+    Visible = False
   end
-  object paddleLeft: TShape
-    Left = 58
-    Top = 312
-    Width = 30
-    Height = 150
-    Brush.Color = clGreen
-  end
-  object paddleRight: TShape
-    Left = 1304
-    Top = 312
-    Width = 30
-    Height = 150
-    Brush.Color = clAqua
+  object rPointsLabel: TLabel
+    Left = 1216
+    Top = 320
+    Width = 55
+    Height = 125
+    Alignment = taCenter
+    Caption = '0'
+    Color = clMoneyGreen
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clOlive
+    Font.Height = -107
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
   end
   object lPointsLabel: TLabel
     Left = 120
@@ -73,30 +86,36 @@ object Form1: TForm1
     ParentFont = False
     Transparent = True
   end
-  object rPointsLabel: TLabel
-    Left = 1216
-    Top = 320
-    Width = 55
-    Height = 125
-    Alignment = taCenter
-    Caption = '0'
-    Color = clMoneyGreen
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clOlive
-    Font.Height = -107
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentColor = False
-    ParentFont = False
+  object ball: TShape
+    Left = 520
+    Top = 560
+    Width = 30
+    Height = 30
+    Brush.Color = clPurple
+    Shape = stCircle
   end
-  object SpeedRatio: TLabel
+  object paddleLeft: TShape
+    Left = 58
+    Top = 312
+    Width = 30
+    Height = 150
+    Brush.Color = clGreen
+  end
+  object paddleRight: TShape
+    Left = 1304
+    Top = 312
+    Width = 30
+    Height = 150
+    Brush.Color = clAqua
+  end
+  object PerkNumber: TLabel
     Left = 336
     Top = 656
     Width = 150
     Height = 36
     Alignment = taCenter
     AutoSize = False
-    Caption = 'SpeedRatio'
+    Caption = 'Perk No.'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clWindowText
     Font.Height = -31
@@ -194,7 +213,7 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
   end
-  object sRatio: TLabel
+  object PerkNumberLabel: TLabel
     Left = 336
     Top = 704
     Width = 150
@@ -208,25 +227,6 @@ object Form1: TForm1
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ParentFont = False
-  end
-  object countdownLabel: TLabel
-    Left = 520
-    Top = 128
-    Width = 222
-    Height = 447
-    Alignment = taCenter
-    Caption = '3'
-    Color = clMoneyGreen
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clNavy
-    Font.Height = -400
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentColor = False
-    ParentFont = False
-    Transparent = True
-    Layout = tlCenter
-    Visible = False
   end
   object Label4: TLabel
     Left = 1024
@@ -258,13 +258,13 @@ object Form1: TForm1
     Font.Style = []
     ParentFont = False
   end
-  object Shape2: TShape
-    Left = 832
-    Top = 416
-    Width = 65
-    Height = 65
+  object perkShape: TShape
+    Left = 584
+    Top = 48
+    Width = 80
+    Height = 80
     Brush.Color = clRed
-    Shape = stSquare
+    Shape = stCircle
     Visible = False
   end
   object Label5: TLabel
@@ -296,6 +296,23 @@ object Form1: TForm1
     Font.Name = 'MS Sans Serif'
     Font.Style = []
     ParentFont = False
+  end
+  object perkTimeLabel: TLabel
+    Left = 632
+    Top = 352
+    Width = 18
+    Height = 37
+    Alignment = taCenter
+    Caption = '8'
+    Color = clRed
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clRed
+    Font.Height = -32
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentColor = False
+    ParentFont = False
+    Transparent = True
   end
   object startButton: TButton
     Left = 480
@@ -380,5 +397,11 @@ object Form1: TForm1
     OnTimer = paddleRightDownTimerTimer
     Left = 80
     Top = 80
+  end
+  object perkTimer: TTimer
+    Enabled = False
+    OnTimer = perkTimerTimer
+    Left = 40
+    Top = 120
   end
 end
