@@ -8,6 +8,7 @@
 #include <StdCtrls.hpp>
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
+#include "PerkManager.h"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -23,14 +24,6 @@ __published:	// IDE-managed Components
         TTimer *paddleRightDownTimer;
         TLabel *lPointsLabel;
         TLabel *rPointsLabel;
-        TLabel *PerkNumber;
-        TLabel *lLabel;
-        TLabel *Label3;
-        TLabel *Label2;
-        TLabel *Label1;
-        TLabel *yLabel;
-        TLabel *xLabel;
-        TLabel *PerkNumberLabel;
         TButton *startButton;
         TButton *dalejButton;
         TButton *koniecButton;
@@ -88,6 +81,7 @@ private:	// User declarations
         int keyLeftDown;
         char whoHitsPerk;
         bool isCannonBallOn;
+        PerkManager perkManager;
 
         void swap (int& a, int& b);
         void setBallSpeed(float speedRatio);
@@ -108,8 +102,6 @@ private:	// User declarations
         void perk2CannonBall();
         void perk3Elongation();
         void finishPerks();
-
-
 
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);

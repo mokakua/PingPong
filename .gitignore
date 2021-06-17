@@ -1,6 +1,7 @@
 #Directories
 /IMG
 /Plans
+/WAV
 
 # Prerequisites
 *.d

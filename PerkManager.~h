@@ -1,0 +1,16 @@
+#ifndef PerkManagerH
+#define PerkManagerH
+
+#include <Classes.hpp>
+#include <Controls.hpp>
+#include "Perk.h"
+#include "DrunkMode.h"
+#include "CannonBall.h"
+#include "Elongation.h"
+
+//---------------------------------------------------------------------------
+class PerkManager{
+
+
+//---------------------------------------------------------------------------
+#endif
