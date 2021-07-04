@@ -9,11 +9,12 @@
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
 #include "PerkManager.h"
+#include <math.h>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
-        TTimer *ballTimer;
+        TTimer *mainTimer;
         TShape *gameArea;
         TShape *ball;
         TShape *paddleLeft;
@@ -37,7 +38,7 @@ __published:	// IDE-managed Components
         TTimer *perkTimer;
         TLabel *perkTimeLabel;
         TTimer *cannonTimer;
-        void __fastcall ballTimerTimer(TObject *Sender);
+        void __fastcall mainTimerTimer(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall paddleRightUpTimerTimer(TObject *Sender);
         void __fastcall paddleRightDownTimerTimer(TObject *Sender);
@@ -72,22 +73,19 @@ private:	// User declarations
         bool perkOn;
         int perkTime;
         int cannonBallTime;
-        int perkSpeed;
-        int perkNumber;
         const int PERK_DURATION;
         int keyRightUp;
         int keyRightDown;
         int keyLeftUp;
         int keyLeftDown;
-        char whoHitsPerk;
         bool isCannonBallOn;
+        int hitsToSpeedIncrease;
         PerkManager perkManager;
 
         void swap (int& a, int& b);
         void setBallSpeed(float speedRatio);
         float calcBallSpeedRatio(TShape* paddle);
         bool doesHitPaddle(TShape* paddle);
-        bool doesPerkHitWall();
         bool doesBallHitWall();
         bool doesBallHitPerkShape();
         bool isFail();
@@ -102,6 +100,8 @@ private:	// User declarations
         void perk2CannonBall();
         void perk3Elongation();
         void finishPerks();
+        void perkHitAction();
+        void paddleHitAction();
 
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);

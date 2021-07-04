@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 237
-  Top = 92
-  Width = 1382
-  Height = 742
+  Left = 243
+  Top = 138
+  Width = 1288
+  Height = 685
   Caption = 'Form1'
   Color = clBtnFace
   UseDockManager = True
@@ -21,16 +21,16 @@ object Form1: TForm1
   object Shape1: TShape
     Left = 0
     Top = 0
-    Width = 1366
-    Height = 703
+    Width = 1272
+    Height = 646
     Align = alClient
     Brush.Color = clMoneyGreen
   end
   object gameArea: TShape
     Left = 0
     Top = 0
-    Width = 1366
-    Height = 703
+    Width = 1272
+    Height = 646
     Align = alClient
     Brush.Color = clMoneyGreen
   end
@@ -245,10 +245,10 @@ object Form1: TForm1
     Visible = False
     OnClick = koniecButtonClick
   end
-  object ballTimer: TTimer
+  object mainTimer: TTimer
     Enabled = False
     Interval = 15
-    OnTimer = ballTimerTimer
+    OnTimer = mainTimerTimer
     Left = 40
     Top = 8
   end
