@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 243
-  Top = 138
-  Width = 1288
-  Height = 685
+  Left = 355
+  Top = 265
+  Width = 1415
+  Height = 749
   Caption = 'Form1'
   Color = clBtnFace
   UseDockManager = True
@@ -21,16 +21,16 @@ object Form1: TForm1
   object Shape1: TShape
     Left = 0
     Top = 0
-    Width = 1272
-    Height = 646
+    Width = 1399
+    Height = 710
     Align = alClient
     Brush.Color = clMoneyGreen
   end
   object gameArea: TShape
     Left = 0
     Top = 0
-    Width = 1272
-    Height = 646
+    Width = 1399
+    Height = 710
     Align = alClient
     Brush.Color = clMoneyGreen
   end
@@ -95,14 +95,14 @@ object Form1: TForm1
     Shape = stCircle
     Visible = False
   end
-  object paddleLeft: TShape
+  object paddleLeftShape: TShape
     Left = 58
     Top = 312
     Width = 30
     Height = 150
     Brush.Color = clGreen
   end
-  object paddleRight: TShape
+  object paddleRightShape: TShape
     Left = 1304
     Top = 312
     Width = 30

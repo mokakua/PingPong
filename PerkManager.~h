@@ -37,6 +37,7 @@ void changePerkDirectionIfHitWall(TShape* perkShape, TShape* gameArea);
 bool doesPerkHitWall(TShape* perkShape, TShape* gameArea);
 bool doesBallHitPerkShape(TShape* perkShape, TShape* ball);
 void setWhoHitPerk(int xSpeed);
+char getWhoHitPerk();
 void finishPerks();
 
 };

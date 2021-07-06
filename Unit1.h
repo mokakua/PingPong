@@ -9,6 +9,7 @@
 #include <Forms.hpp>
 #include <ExtCtrls.hpp>
 #include "PerkManager.h"
+#include "PaddleData.h"
 #include <math.h>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
@@ -17,8 +18,8 @@ __published:	// IDE-managed Components
         TTimer *mainTimer;
         TShape *gameArea;
         TShape *ball;
-        TShape *paddleLeft;
-        TShape *paddleRight;
+        TShape *paddleLeftShape;
+        TShape *paddleRightShape;
         TTimer *paddleLeftUpTimer;
         TTimer *paddleLeftDownTimer;
         TTimer *paddleRightUpTimer;
@@ -69,8 +70,6 @@ private:	// User declarations
         const int MAX_SPEED_RATIO;
         float xSpeed;
         float ySpeed;
-        bool gameStarted;
-        bool perkOn;
         int perkTime;
         int cannonBallTime;
         const int PERK_DURATION;
@@ -81,11 +80,13 @@ private:	// User declarations
         bool isCannonBallOn;
         int hitsToSpeedIncrease;
         PerkManager perkManager;
+        PaddleData *paddleLeftData;
+        PaddleData *paddleRightData;
 
         void swap (int& a, int& b);
         void setBallSpeed(float speedRatio);
         float calcBallSpeedRatio(TShape* paddle);
-        bool doesHitPaddle(TShape* paddle);
+        bool doesBallHitPaddle(TShape* paddle);
         bool doesBallHitWall();
         bool doesBallHitPerkShape();
         bool isFail();
@@ -94,7 +95,7 @@ private:	// User declarations
         void setPoints();
         void setStartBallSpeed();
         void prepareIconsLayout();
-        void startTheBall();
+        void startTheRound();
         void perkTurnOn();
         void perk1DrunkMode();
         void perk2CannonBall();

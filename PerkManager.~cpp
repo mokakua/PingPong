@@ -76,10 +76,14 @@ bool PerkManager::doesBallHitPerkShape(TShape* perkShape, TShape* ball){
 
 void PerkManager::setWhoHitPerk(int xSpeed){
         if (xSpeed > 0){
-                whoHitsPerk = 'l';
+                whoHitPerk = 'l';
         } else {
-                whoHitsPerk = 'r';
+                whoHitPerk = 'r';
         }
+}
+
+char PerkManager::getWhoHitPerk(){
+        return whoHitPerk;
 }
 
 void PerkManager::finishPerks(){
