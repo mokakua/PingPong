@@ -1,4 +1,5 @@
 #include "PerkManager.h"
+#include "Unit1.h"
 
 PerkManager::PerkManager(){
 
@@ -6,7 +7,7 @@ PerkManager::PerkManager(){
         pickedPerk = 0;
         perkSpeed = 2;
         whoHitPerk = NULL;
-        Perk perk("Drunk Mode", "Chenges opponent's paddle speed and steering", clRed, 10);
+        Perk perk("Drunk Mode", "Changes opponent's paddle speed and steering", clRed, 10);
         perks.push_back(perk);
         Perk perk1("Cannon Ball", "Catches the ball and shoot with incredible speed", clBlue, 0);
         perks.push_back(perk1);
@@ -30,6 +31,12 @@ void PerkManager::showPerkIcon(TShape* perkShape, TShape* gameArea){
 //---------------------------------------------------------------------------
 bool PerkManager::isPerkOn(){
         return perkOn;
+}
+//---------------------------------------------------------------------------
+void PerkManager::turnPerkOn(TShape* perkShape,TShape* gameArea, TLabel* perkTimeLabel){
+        pickRandomPerk();
+        showPerkIcon(perkShape, gameArea);
+        perkHitAction(perkShape, perkTimeLabel);
 }
 //---------------------------------------------------------------------------
 int PerkManager::getPickedPerkNumber(){
@@ -86,8 +93,80 @@ char PerkManager::getWhoHitPerk(){
         return whoHitPerk;
 }
 //---------------------------------------------------------------------------
-void PerkManager::finishPerks(){
+void PerkManager::finishPerks(PaddleData *paddleLeftData, PaddleData *paddleRightData){
         pickedPerk = 0;
+        perkOn = false;
         whoHitPerk = NULL;
+
+        //drunkMode
+        *(paddleRightData->getKeyUp()) = VK_UP;
+        *(paddleRightData->getKeyDown()) = VK_DOWN;
+        *(paddleLeftData->getKeyUp()) = 0x41;
+        *(paddleLeftData->getKeyDown()) = 0x5A;
+        paddleRightData->setPaddleSpeed(TForm1::PADDLE_SPEED);
+        paddleLeftData->setPaddleSpeed(TForm1::PADDLE_SPEED);
+
+        //elongation
+        (paddleLeftData->getPaddleShape())->Height = TForm1::PADDLE_LENGTH;
+        (paddleRightData->getPaddleShape())->Height = TForm1::PADDLE_LENGTH;
+
+        //cannonBall
+        isCannonBallOn = false;
+        //cannonTimer->Enabled = false;
+        //rightPaddleSpeed = PADDLE_SPEED;
+        //leftPaddleSpeed = PADDLE_SPEED;
+
+}
+//---------------------------------------------------------------------------
+
+bool PerkManager::getIsCannonBallOn(){
+        return isCannonBallOn;
+}
+//---------------------------------------------------------------------------
+void PerkManager::turnCannonBallOn(){
+        isCannonBallOn = true;
+}
+//---------------------------------------------------------------------------
+void PerkManager::showPerksDescription(TShape* perkShape, TShape* perkShape1, TShape* perkShape2, TLabel* perkDescription, TLabel* perk1Description, TLabel* perk2Description){
+        perkShape->Visible = true;
+        perkShape1->Visible = true;
+        perkShape2->Visible = true;
+        perkDescription->Visible = true;
+        perk1Description->Visible = true;
+        perk2Description->Visible = true;
+
+        perkShape->Left =  300;
+        perkShape->Top =  100;
+        perkShape1->Left =  perkShape->Left;
+        perkShape1->Top =  perkShape->Top + 100;
+        perkShape2->Left =  perkShape1->Left;
+        perkShape2->Top =  perkShape1->Top + 100;
+
+        perkDescription->Left =  perkShape->Left + 100;
+        perkDescription->Top =  perkShape->Top + 20;
+        perk1Description->Left =  perkShape1->Left + 100;
+        perk1Description->Top =  perkShape1->Top + 20;
+        perk2Description->Left =  perkShape2->Left + 100;
+        perk2Description->Top =  perkShape2->Top + 20;
+
+        perkDescription->Visible = true;
+        perk1Description->Visible = true;
+        perk2Description->Visible = true;
+
+        perkShape->Brush->Color = perks[0].getColor();
+        perkShape1->Brush->Color = perks[1].getColor();
+        perkShape2->Brush->Color = perks[2].getColor();
+        perkDescription->Caption = perks[0].getDescription();
+        perk1Description->Caption = perks[1].getDescription();
+        perk2Description->Caption = perks[2].getDescription();
+}
+//---------------------------------------------------------------------------
+void PerkManager::hidePerksDescription(TShape* perkShape, TShape* perkShape1, TShape* perkShape2, TLabel* perkDescription, TLabel* perk1Description, TLabel* perk2Description){
+        perkShape->Visible = false;
+        perkShape1->Visible = false;
+        perkShape2->Visible = false;
+        perkDescription->Visible = false;
+        perk1Description->Visible = false;
+        perk2Description->Visible = false;
 }
 //---------------------------------------------------------------------------

@@ -16,7 +16,6 @@ class TForm1 : public TForm
 {
 __published:	// IDE-managed Components
         TTimer *mainTimer;
-        TShape *gameArea;
         TShape *ball;
         TShape *paddleLeftShape;
         TShape *paddleRightShape;
@@ -30,15 +29,22 @@ __published:	// IDE-managed Components
         TButton *dalejButton;
         TButton *koniecButton;
         TLabel *countdownLabel;
-        TLabel *Label4;
+        TLabel *hitsLabel1;
         TLabel *hitsLabel;
         TShape *perkShape;
-        TShape *Shape1;
-        TLabel *Label5;
+        TLabel *BSpeedLabel1;
         TLabel *BSpeedLabel;
         TTimer *perkTimer;
         TLabel *perkTimeLabel;
         TTimer *cannonTimer;
+        TShape *Shape1;
+        TShape *gameArea;
+        TShape *perkShape1;
+        TLabel *perk1Description;
+        TLabel *perk2Description;
+        TShape *perkShape2;
+        TShape *perkShape3;
+        TLabel *perk3Description;
         void __fastcall mainTimerTimer(TObject *Sender);
         void __fastcall FormCreate(TObject *Sender);
         void __fastcall paddleRightUpTimerTimer(TObject *Sender);
@@ -58,9 +64,7 @@ private:	// User declarations
 
         const int MIN_BALL_SPEED;
         const int MAX_BALL_SPEED;
-        const int PADDLE_LENGTH;
         int ballSpeed;
-        const int PADDLE_SPEED;
         int leftPaddleSpeed;
         int rightPaddleSpeed;
         int leftPoints, rightPoints;
@@ -77,11 +81,11 @@ private:	// User declarations
         int keyRightDown;
         int keyLeftUp;
         int keyLeftDown;
-        bool isCannonBallOn;
+        //bool isCannonBallOn;
         int hitsToSpeedIncrease;
         PerkManager perkManager;
-        PaddleData *paddleLeft;
-        PaddleData *paddleRight;
+        PaddleData *paddleLeftData;
+        PaddleData *paddleRightData;
 
         void swap (int& a, int& b);
         void setBallSpeed(float speedRatio);
@@ -96,16 +100,18 @@ private:	// User declarations
         void setStartBallSpeed();
         void prepareIconsLayout();
         void startTheRound();
-        void perkTurnOn();
         void perk1DrunkMode();
         void perk2CannonBall();
         void perk3Elongation();
         void finishPerks();
         void perkHitAction();
         void paddleHitAction();
+        void showPerksDescription();
 
 public:		// User declarations
         __fastcall TForm1(TComponent* Owner);
+        static const int PADDLE_SPEED = 10;
+        static const int PADDLE_LENGTH = 150;
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm1 *Form1;

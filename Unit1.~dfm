@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 355
-  Top = 265
-  Width = 1415
-  Height = 749
+  Left = 340
+  Top = 108
+  Width = 1404
+  Height = 721
   Caption = 'Form1'
   Color = clBtnFace
   UseDockManager = True
@@ -18,21 +18,81 @@ object Form1: TForm1
   OnKeyUp = FormKeyUp
   PixelsPerInch = 96
   TextHeight = 13
-  object Shape1: TShape
-    Left = 0
-    Top = 0
-    Width = 1399
-    Height = 710
-    Align = alClient
-    Brush.Color = clMoneyGreen
-  end
   object gameArea: TShape
     Left = 0
     Top = 0
-    Width = 1399
-    Height = 710
+    Width = 1388
+    Height = 682
     Align = alClient
     Brush.Color = clMoneyGreen
+  end
+  object Shape1: TShape
+    Left = 0
+    Top = 0
+    Width = 1388
+    Height = 682
+    Align = alClient
+    Brush.Color = clMoneyGreen
+  end
+  object hitsLabel: TLabel
+    Left = 872
+    Top = 632
+    Width = 17
+    Height = 36
+    Caption = '0'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clOlive
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object hitsLabel1: TLabel
+    Left = 760
+    Top = 632
+    Width = 100
+    Height = 36
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Hits:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clOlive
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object BSpeedLabel: TLabel
+    Left = 488
+    Top = 632
+    Width = 17
+    Height = 36
+    Caption = '0'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clOlive
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object BSpeedLabel1: TLabel
+    Left = 376
+    Top = 632
+    Width = 100
+    Height = 36
+    Alignment = taCenter
+    AutoSize = False
+    Caption = 'Speed:'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clOlive
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
   end
   object countdownLabel: TLabel
     Left = 528
@@ -87,8 +147,8 @@ object Form1: TForm1
     Transparent = True
   end
   object ball: TShape
-    Left = 520
-    Top = 560
+    Left = 448
+    Top = 488
     Width = 30
     Height = 30
     Brush.Color = clPurple
@@ -109,36 +169,6 @@ object Form1: TForm1
     Height = 150
     Brush.Color = clAqua
   end
-  object Label4: TLabel
-    Left = 728
-    Top = 536
-    Width = 150
-    Height = 36
-    Alignment = taCenter
-    AutoSize = False
-    Caption = 'Hits'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -31
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentFont = False
-  end
-  object hitsLabel: TLabel
-    Left = 728
-    Top = 584
-    Width = 150
-    Height = 36
-    Alignment = taCenter
-    AutoSize = False
-    Caption = 'Hits'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -31
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentFont = False
-  end
   object perkShape: TShape
     Left = 584
     Top = 48
@@ -147,36 +177,6 @@ object Form1: TForm1
     Brush.Color = clRed
     Shape = stCircle
     Visible = False
-  end
-  object Label5: TLabel
-    Left = 408
-    Top = 536
-    Width = 150
-    Height = 36
-    Alignment = taCenter
-    AutoSize = False
-    Caption = 'BSpeed'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -31
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentFont = False
-  end
-  object BSpeedLabel: TLabel
-    Left = 408
-    Top = 584
-    Width = 150
-    Height = 36
-    Alignment = taCenter
-    AutoSize = False
-    Caption = 'BSpeed'
-    Font.Charset = DEFAULT_CHARSET
-    Font.Color = clWindowText
-    Font.Height = -31
-    Font.Name = 'MS Sans Serif'
-    Font.Style = []
-    ParentFont = False
   end
   object perkTimeLabel: TLabel
     Left = 632
@@ -196,12 +196,81 @@ object Form1: TForm1
     Transparent = True
     Visible = False
   end
+  object perkShape1: TShape
+    Left = 160
+    Top = 16
+    Width = 80
+    Height = 80
+    Brush.Color = clRed
+    Shape = stCircle
+  end
+  object perk1Description: TLabel
+    Left = 236
+    Top = 40
+    Width = 225
+    Height = 36
+    Alignment = taCenter
+    Caption = 'perk1Description'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clOlive
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object perk2Description: TLabel
+    Left = 236
+    Top = 136
+    Width = 225
+    Height = 36
+    Alignment = taCenter
+    Caption = 'perk2Description'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clOlive
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
+  object perkShape2: TShape
+    Left = 160
+    Top = 112
+    Width = 80
+    Height = 80
+    Brush.Color = clRed
+    Shape = stCircle
+  end
+  object perkShape3: TShape
+    Left = 160
+    Top = 208
+    Width = 80
+    Height = 80
+    Brush.Color = clRed
+    Shape = stCircle
+  end
+  object perk3Description: TLabel
+    Left = 228
+    Top = 236
+    Width = 225
+    Height = 36
+    Alignment = taCenter
+    Caption = 'perk3Description'
+    Font.Charset = DEFAULT_CHARSET
+    Font.Color = clOlive
+    Font.Height = -31
+    Font.Name = 'MS Sans Serif'
+    Font.Style = []
+    ParentFont = False
+    Transparent = True
+  end
   object startButton: TButton
-    Left = 480
-    Top = 232
-    Width = 305
+    Left = 792
+    Top = 320
+    Width = 200
     Height = 73
-    Caption = 'START(Enter)'
+    Caption = 'START'
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clRed
     Font.Height = -40
@@ -212,11 +281,11 @@ object Form1: TForm1
     OnClick = startButtonClick
   end
   object dalejButton: TButton
-    Left = 504
-    Top = 152
+    Left = 760
+    Top = 216
     Width = 257
     Height = 73
-    Caption = 'GRAJ DALEJ'
+    Caption = 'CONTINUE'
     Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clRed
@@ -229,11 +298,11 @@ object Form1: TForm1
     OnClick = dalejButtonClick
   end
   object koniecButton: TButton
-    Left = 504
-    Top = 432
+    Left = 760
+    Top = 424
     Width = 257
     Height = 73
-    Caption = 'KONIEC GRY'
+    Caption = 'EXIT'
     Enabled = False
     Font.Charset = DEFAULT_CHARSET
     Font.Color = clRed
