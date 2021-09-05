@@ -3,10 +3,10 @@
 <PROJECT>
   <MACROS>
     <VERSION value="BCB.06.00"/>
-    <PROJECT value="Project1.exe"/>
-    <OBJFILES value="Project1.obj Unit1.obj Perk.obj DrunkMode.obj CannonBall.obj 
+    <PROJECT value="PingPong.exe"/>
+    <OBJFILES value="PingPong.obj Unit1.obj Perk.obj DrunkMode.obj CannonBall.obj 
       Elongation.obj PerkManager.obj PaddleData.obj"/>
-    <RESFILES value="Project1.res"/>
+    <RESFILES value="PingPong.res"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) Unit1.dfm"/>
     <LIBFILES value=""/>
@@ -22,7 +22,7 @@
     <LINKER value="ilink32"/>
     <USERDEFINES value="_DEBUG"/>
     <SYSDEFINES value="_RTLDLL;NO_STRICT;USEPACKAGES"/>
-    <MAINSOURCE value="Project1.cpp"/>
+    <MAINSOURCE value="PingPong.cpp"/>
     <INCLUDEPATH value="$(BCB)\Projects;D:\Repos\PrzyszlyProgramista\PingPong;$(BCB)\include;$(BCB)\include\vcl"/>
     <LIBPATH value="$(BCB)\Projects;D:\Repos\PrzyszlyProgramista\PingPong;$(BCB)\lib\obj;$(BCB)\lib"/>
     <WARNINGS value="-w-par"/>
@@ -43,8 +43,8 @@
     <OTHERFILES value=""/>
   </LINKER>
   <FILELIST>
-      <FILE FILENAME="Project1.res" FORMNAME="" UNITNAME="Project1.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="Project1.cpp" FORMNAME="" UNITNAME="Project1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="PingPong.res" FORMNAME="" UNITNAME="PingPong.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="PingPong.cpp" FORMNAME="" UNITNAME="PingPong" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Unit1.cpp" FORMNAME="Form1" UNITNAME="Unit1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Perk.cpp" FORMNAME="" UNITNAME="Perk" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="DrunkMode.cpp" FORMNAME="" UNITNAME="DrunkMode" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
