@@ -1,0 +1,14 @@
+#include "Perk.h"
+
+AnsiString Perk::getName(){
+        return name;
+}
+AnsiString Perk::getDescription(){
+        return description;
+}
+TColor Perk::getColor(){
+        return color;
+}
+int Perk::getDuration(){
+        return duration;
+}
