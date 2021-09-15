@@ -1,8 +1,8 @@
 object Form1: TForm1
-  Left = 340
-  Top = 108
-  Width = 1404
-  Height = 721
+  Left = 313
+  Top = 105
+  Width = 1400
+  Height = 756
   Caption = 'Form1'
   Color = clBtnFace
   UseDockManager = True
@@ -21,16 +21,16 @@ object Form1: TForm1
   object gameArea: TShape
     Left = 0
     Top = 0
-    Width = 1388
-    Height = 682
+    Width = 1384
+    Height = 717
     Align = alClient
     Brush.Color = clMoneyGreen
   end
   object Shape1: TShape
     Left = 0
     Top = 0
-    Width = 1388
-    Height = 682
+    Width = 1384
+    Height = 717
     Align = alClient
     Brush.Color = clMoneyGreen
   end

@@ -11,6 +11,7 @@
 #include "PerkManager.h"
 #include "PaddleData.h"
 #include <math.h>
+#include <MPlayer.hpp>
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
