@@ -85,7 +85,7 @@ private:	// User declarations
         PaddleData *paddleLeftData;
         PaddleData *paddleRightData;
 
-        void swap (int& a, int& b);
+        //void swap (int& a, int& b);
         void setBallSpeed(float speedRatio);
         float calcBallSpeedRatio(TShape* paddle);
         bool doesBallHitPaddle(TShape* paddle);
