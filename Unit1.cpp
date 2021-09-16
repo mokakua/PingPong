@@ -15,21 +15,21 @@ __fastcall TForm1::TForm1(TComponent* Owner)
         PADDLE_TO_BORDER_DISTANCE(80), MAX_SPEED_RATIO(2), PERK_DURATION(8),
         paddleLeftData(NULL), paddleRightData(NULL)
 {
-        leftPaddleSpeed = PADDLE_SPEED;
-        rightPaddleSpeed = PADDLE_SPEED;
+        //leftPaddleSpeed = PADDLE_SPEED;
+        //rightPaddleSpeed = PADDLE_SPEED;
         leftPoints = 0;
         rightPoints = 0;
         ballSpeed = MIN_BALL_SPEED;
         ballHits = 0;
         //perkTime = 0;
-        keyRightUp = VK_UP;
-        keyRightDown = VK_DOWN;
-        keyLeftUp = 0x41;
-        keyLeftDown = 0x5A;
+        //keyRightUp = VK_UP;
+        //keyRightDown = VK_DOWN;
+        //keyLeftUp = 0x41;
+        //keyLeftDown = 0x5A;
         cannonBallTime = 0;
         hitsToSpeedIncrease = 3;
-        paddleLeftData = new PaddleData(paddleLeftShape, &leftPaddleSpeed, &keyLeftUp, &keyLeftDown);
-        paddleRightData = new PaddleData(paddleRightShape, &rightPaddleSpeed, &keyRightUp, &keyRightDown);
+        paddleLeftData = new PaddleData(paddleLeftShape, PADDLE_SPEED, KEY_LEFT_UP, KEY_LEFT_DOWN);
+        paddleRightData = new PaddleData(paddleRightShape, PADDLE_SPEED, KEY_RIGHT_UP, KEY_RIGHT_DOWN);
         perkManager.showPerksDescription(perkShape1, perkShape2, perkShape3, perk1Description, perk2Description, perk3Description);
         gameArea->Width = 1400;
         gameArea->Height = 700;
@@ -87,12 +87,6 @@ void TForm1::prepareIconsLayout(){
         hitsLabel1->Top =  gameArea->Height - 50;
         hitsLabel->Left =  hitsLabel1->Left + 100;
         hitsLabel->Top =  gameArea->Height - 50;
-}
-//---------------------------------------------------------------------------
-void TForm1::swap(int& a, int& b){
-        int tempValue = a;
-        a = b;
-        b = tempValue;
 }
 //---------------------------------------------------------------------------
 void TForm1::setStartBallSpeed(){
@@ -257,7 +251,7 @@ void TForm1::perkHitAction(){
         perkTimeLabel->Caption = PERK_DURATION;
         switch (perkManager.getPickedPerkNumber()){
                 case 0:{
-                        perk1DrunkMode();
+                        perkManager.perk1DrunkMode(paddleLeftData, paddleRightData);
                 }break;
                 case 1:{
                 }break;
@@ -303,7 +297,7 @@ void TForm1::finishPerks(){
         perkManager.finishPerks(paddleLeftData, paddleRightData);
         perkTimer->Enabled = false;
         //perkTime = 0;
-        perkManager.setPerkTime(0);
+        //perkManager.setPerkTime(0);
         perkTimeLabel->Visible = false;
         perkShape->Visible = false;
 
@@ -312,16 +306,28 @@ void TForm1::finishPerks(){
 
 }
 //---------------------------------------------------------------------------
-void TForm1::perk1DrunkMode(){
+void TForm1::swap(int& a, int& b){
+        int tempValue = a;
+        a = b;
+        b = tempValue;
+}
+//---------------------------------------------------------------------------
+/*void TForm1::perk1DrunkMode(){
         int drunkMultiplier = 3;
         if(perkManager.getWhoHitPerk() == 'l'){
-                swap(keyRightUp,keyRightDown);
+                int tempValue = paddleRightData->getKeyUp();
+                paddleRightData->setKeyUp(paddleRightData->getKeyDown());
+                paddleRightData->setKeyDown(tempValue);
+                //swap(keyRightUp,keyRightDown);
                 rightPaddleSpeed *= drunkMultiplier;
         }else{
-                swap(keyLeftUp,keyLeftDown);
+                int tempValue = paddleLeftData->getKeyUp();
+                paddleLeftData->setKeyUp(paddleLeftData->getKeyDown());
+                paddleLeftData->setKeyDown(tempValue);
+                //swap(keyLeftUp,keyLeftDown);
                 leftPaddleSpeed *= drunkMultiplier;
         }
-}
+}*/
 //---------------------------------------------------------------------------
 void TForm1::perk2CannonBall(){
         cannonBallTime = 3;
@@ -332,12 +338,14 @@ void TForm1::perk2CannonBall(){
         perkTimeLabel->Caption = cannonBallTime;
         ySpeed = 0;
         if (perkManager.getWhoHitPerk() == 'l'){
-                leftPaddleSpeed = PADDLE_SPEED*1.5;
+                paddleLeftData->setPaddleSpeed(PADDLE_SPEED*1.5);
+                //leftPaddleSpeed = PADDLE_SPEED*1.5;
                 ball->Top = paddleLeftShape->Top+paddleLeftShape->Height/2 - ball->Height/2;
                 ball->Left = paddleLeftShape->Left + paddleLeftShape->Width;
                 xSpeed = 50;
         }else{
-                rightPaddleSpeed = PADDLE_SPEED*1.5;
+                paddleRightData->setPaddleSpeed(PADDLE_SPEED*1.5);
+                //rightPaddleSpeed = PADDLE_SPEED*1.5;
                 ball->Top = paddleRightShape->Top+paddleRightShape->Height/2 - ball->Height/2;
                 ball->Left = paddleRightShape->Left - ball->Width;
                 xSpeed = -50;
@@ -393,9 +401,9 @@ void __fastcall TForm1::FormClose(TObject *Sender, TCloseAction &Action)
 void __fastcall TForm1::paddleRightUpTimerTimer(TObject *Sender)
 {
         if (paddleRightShape->Top >= 5){
-                paddleRightShape->Top -= rightPaddleSpeed;
+                paddleRightShape->Top -= paddleRightData->getPaddleSpeed();//rightPaddleSpeed;
                 if (perkManager.getIsCannonBallOn() && perkManager.getWhoHitPerk() == 'r'){
-                        ball->Top -= rightPaddleSpeed;
+                        ball->Top -= paddleRightData->getPaddleSpeed();//rightPaddleSpeed;
                 }
         }
 }
@@ -403,9 +411,9 @@ void __fastcall TForm1::paddleRightUpTimerTimer(TObject *Sender)
 void __fastcall TForm1::paddleRightDownTimerTimer(TObject *Sender)
 {
         if (paddleRightShape->Top + paddleRightShape->Height <= gameArea->Height - 5){
-                paddleRightShape->Top += rightPaddleSpeed;
+                paddleRightShape->Top += paddleRightData->getPaddleSpeed();//rightPaddleSpeed;
                 if (perkManager.getIsCannonBallOn() && perkManager.getWhoHitPerk() == 'r'){
-                        ball->Top += rightPaddleSpeed;
+                        ball->Top += paddleRightData->getPaddleSpeed();//rightPaddleSpeed;
                 }
         }
 }
@@ -413,9 +421,9 @@ void __fastcall TForm1::paddleRightDownTimerTimer(TObject *Sender)
 void __fastcall TForm1::paddleLeftUpTimerTimer(TObject *Sender)
 {
         if (paddleLeftShape->Top >= 5){
-                paddleLeftShape->Top -= leftPaddleSpeed;
+                paddleLeftShape->Top -= paddleLeftData->getPaddleSpeed();//leftPaddleSpeed;
                 if (perkManager.getIsCannonBallOn() && perkManager.getWhoHitPerk() == 'l'){
-                        ball->Top -= leftPaddleSpeed;
+                        ball->Top -= paddleLeftData->getPaddleSpeed();//leftPaddleSpeed;
                 }
         }
 }
@@ -424,9 +432,9 @@ void __fastcall TForm1::paddleLeftUpTimerTimer(TObject *Sender)
 void __fastcall TForm1::paddleLeftDownTimerTimer(TObject *Sender)
 {
         if (paddleLeftShape->Top + paddleLeftShape->Height <= gameArea->Height - 5){
-                paddleLeftShape->Top += leftPaddleSpeed;
+                paddleLeftShape->Top += paddleLeftData->getPaddleSpeed();//leftPaddleSpeed;
                 if (perkManager.getIsCannonBallOn() && perkManager.getWhoHitPerk() == 'l'){
-                        ball->Top += leftPaddleSpeed;
+                        ball->Top += paddleLeftData->getPaddleSpeed();//leftPaddleSpeed;
                 }
         }
 }
@@ -435,18 +443,17 @@ void __fastcall TForm1::paddleLeftDownTimerTimer(TObject *Sender)
 void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key,
       TShiftState Shift)
 {
-        if (Key == keyRightUp){
+        if (Key == paddleRightData->getKeyUp()){
                 paddleRightUpTimer->Enabled = true;
 
         }
-        if (Key == keyRightDown){
+        if (Key == paddleRightData->getKeyDown()){
                 paddleRightDownTimer->Enabled = true;
         }
-        if (Key == keyLeftUp){
+        if (Key == paddleLeftData->getKeyUp()){
                 paddleLeftUpTimer->Enabled = true;
-
         }
-        if (Key == keyLeftDown){
+        if (Key == paddleLeftData->getKeyDown()){
                 paddleLeftDownTimer->Enabled = true;
         }
 }
@@ -455,16 +462,16 @@ void __fastcall TForm1::FormKeyDown(TObject *Sender, WORD &Key,
 void __fastcall TForm1::FormKeyUp(TObject *Sender, WORD &Key,
       TShiftState Shift)
 {
-        if (Key == keyRightUp){
+        if (Key == paddleRightData->getKeyUp()){
                 paddleRightUpTimer->Enabled = false;
         }
-        if (Key == keyRightDown){
+        if (Key == paddleRightData->getKeyDown()){
                 paddleRightDownTimer->Enabled = false;
         }
-        if (Key == keyLeftUp){
+        if (Key == paddleLeftData->getKeyUp()){
                 paddleLeftUpTimer->Enabled = false;
         }
-        if (Key == keyLeftDown){
+        if (Key == paddleLeftData->getKeyDown()){
                 paddleLeftDownTimer->Enabled = false;
         }
 }

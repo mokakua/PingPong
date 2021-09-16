@@ -13,14 +13,23 @@ using namespace std;
 //---------------------------------------------------------------------------
 class PaddleData{
 
-const TShape *paddle;
-const int *paddleSpeed;
-const int *keyLeftUp;
-const int *keyLeftDown;
+TShape *paddleShape;
+int *paddleSpeed;
+int *keyUp;
+int *keyDown;
 
 public:
 
-PaddleData(TShape *paddle, int *paddleSpeed, int *keyUp, int *keyDown;);
+PaddleData(TShape *paddleShape, int *paddleSpeed, int *keyUp, int *keyDown);
+TShape* getPaddleShape();
+int* getPaddleSpeed();
+int* getKeyUp();
+int* getKeyDown();
+void setPaddleSpeed(int paddleSpeed);
+void setKeyUp(int keyUp);
+void setKeyDown(int keyDown);
+
+
 
 };
 //---------------------------------------------------------------------------

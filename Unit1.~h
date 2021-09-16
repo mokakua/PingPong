@@ -76,13 +76,9 @@ private:	// User declarations
         const int MAX_SPEED_RATIO;
         float xSpeed;
         float ySpeed;
-        int perkTime;
+        //int perkTime;
         int cannonBallTime;
         const int PERK_DURATION;
-        int keyRightUp;
-        int keyRightDown;
-        int keyLeftUp;
-        int keyLeftDown;
         //bool isCannonBallOn;
         int hitsToSpeedIncrease;
         PerkManager perkManager;
@@ -113,6 +109,10 @@ public:		// User declarations
         __fastcall TForm1(TComponent* Owner);
         static const int PADDLE_SPEED = 10;
         static const int PADDLE_LENGTH = 150;
+        static const int KEY_RIGHT_UP = VK_UP;//keyRightUp;
+        static const int KEY_RIGHT_DOWN = VK_DOWN;//keyRightDown;
+        static const int KEY_LEFT_UP = 0x41;//keyLeftUp;
+        static const int KEY_LEFT_DOWN = 0x5A;//keyLeftDown;
 };
 //---------------------------------------------------------------------------
 extern PACKAGE TForm1 *Form1;
