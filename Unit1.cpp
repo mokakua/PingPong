@@ -256,7 +256,7 @@ void TForm1::perkHitAction(){
                 case 1:{
                 }break;
                 case 2:{
-                        perk3Elongation();
+                        perkManager.perk3Elongation(paddleLeftData, paddleRightData);
                 }break;
                 }
         }
@@ -351,14 +351,14 @@ void TForm1::perk2CannonBall(){
                 xSpeed = -50;
         }
 }
-//---------------------------------------------------------------------------
+/*//---------------------------------------------------------------------------
 void TForm1::perk3Elongation(){
         if(perkManager.getWhoHitPerk() == 'r'){
                 paddleRightShape->Height*=2;
         }else{
                 paddleLeftShape->Height*=2;
         }
-}
+}*/
 //---------------------------------------------------------------------------
 void __fastcall TForm1::perkTimerTimer(TObject *Sender)
 {

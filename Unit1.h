@@ -99,7 +99,7 @@ private:	// User declarations
         void startTheRound();
         //void perk1DrunkMode();
         void perk2CannonBall();
-        void perk3Elongation();
+        //void perk3Elongation();
         void finishPerks();
         void perkHitAction();
         void paddleHitAction();

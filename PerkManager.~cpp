@@ -102,16 +102,34 @@ char PerkManager::getWhoHitPerk(){
         return whoHitPerk;
 }
 //---------------------------------------------------------------------------
+void PerkManager::perk1DrunkMode(PaddleData *paddleLeftData, PaddleData *paddleRightData){
+        int drunkMultiplier = 3;
+        if(getWhoHitPerk() == 'l'){
+                int tempValue = paddleRightData->getKeyUp();
+                paddleRightData->setKeyUp(paddleRightData->getKeyDown());
+                paddleRightData->setKeyDown(tempValue);
+                paddleRightData->setPaddleSpeed(drunkMultiplier * paddleRightData->getPaddleSpeed());
+                //rightPaddleSpeed *= drunkMultiplier;
+        }else{
+                int tempValue = paddleLeftData->getKeyUp();
+                paddleLeftData->setKeyUp(paddleLeftData->getKeyDown());
+                paddleLeftData->setKeyDown(tempValue);
+                paddleLeftData->setPaddleSpeed(paddleLeftData->getPaddleSpeed()*drunkMultiplier);
+                //leftPaddleSpeed *= drunkMultiplier;
+        }
+}
+//---------------------------------------------------------------------------
 void PerkManager::finishPerks(PaddleData *paddleLeftData, PaddleData *paddleRightData){
         pickedPerk = 0;
         perkOn = false;
         whoHitPerk = NULL;
+        perkTime = 0;
 
         //drunkMode
-        *(paddleRightData->getKeyUp()) = VK_UP;
-        *(paddleRightData->getKeyDown()) = VK_DOWN;
-        *(paddleLeftData->getKeyUp()) = 0x41;
-        *(paddleLeftData->getKeyDown()) = 0x5A;
+        paddleRightData->setKeyUp(TForm1::KEY_RIGHT_UP);//VK_UP;
+        paddleRightData->setKeyDown(TForm1::KEY_RIGHT_DOWN);//VK_DOWN;
+        paddleLeftData->setKeyUp(TForm1::KEY_LEFT_UP);//x41;
+        paddleLeftData->setKeyDown(TForm1::KEY_LEFT_DOWN);//0x5A;
         paddleRightData->setPaddleSpeed(TForm1::PADDLE_SPEED);
         paddleLeftData->setPaddleSpeed(TForm1::PADDLE_SPEED);
 

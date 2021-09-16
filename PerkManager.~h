@@ -45,6 +45,7 @@ bool doesPerkHitWall(TShape* perkShape, TShape* gameArea);
 bool doesBallHitPerkShape(TShape* perkShape, TShape* ball);
 void setWhoHitPerk(int xSpeed);
 char getWhoHitPerk();
+void perk1DrunkMode(PaddleData *paddleLeftData, PaddleData *paddleRightData);
 void finishPerks(PaddleData *paddleLeftData, PaddleData *paddleRightData);
 bool getIsCannonBallOn();
 void turnCannonBallOn();
