@@ -21,7 +21,7 @@ __fastcall TForm1::TForm1(TComponent* Owner)
         rightPoints = 0;
         ballSpeed = MIN_BALL_SPEED;
         ballHits = 0;
-        perkTime = 0;
+        //perkTime = 0;
         keyRightUp = VK_UP;
         keyRightDown = VK_DOWN;
         keyLeftUp = 0x41;
@@ -224,7 +224,8 @@ void __fastcall TForm1::mainTimerTimer(TObject *Sender)
         }
 
         if(!perkManager.isPerkOn() && !perkTimer->Enabled){
-                perkTime = 0;
+                perkManager.setPerkTime(0);
+                //perkTime = 0;
                 perkTimer->Enabled = true;
         }else if (perkManager.isPerkOn() && !perkTimer->Enabled){
                 perkHitAction();
@@ -248,7 +249,8 @@ void TForm1::perkHitAction(){
         if (perkManager.doesBallHitPerkShape(perkShape, ball)){
         perkManager.setWhoHitPerk(xSpeed);
         perkShape->Visible = false;
-        perkTime = 0;
+        //perkTime = 0;
+        perkManager.setPerkTime(0);
         perkTimer->Enabled = true;
         sndPlaySound("WAV/perk.wav",SND_ASYNC);
         perkTimeLabel->Visible = true;
@@ -300,7 +302,8 @@ void TForm1::paddleHitAction(){
 void TForm1::finishPerks(){
         perkManager.finishPerks(paddleLeftData, paddleRightData);
         perkTimer->Enabled = false;
-        perkTime = 0;
+        //perkTime = 0;
+        perkManager.setPerkTime(0);
         perkTimeLabel->Visible = false;
         perkShape->Visible = false;
 
@@ -351,17 +354,18 @@ void TForm1::perk3Elongation(){
 //---------------------------------------------------------------------------
 void __fastcall TForm1::perkTimerTimer(TObject *Sender)
 {
-        perkTime++;
-        perkTimeLabel->Caption =  PERK_DURATION-perkTime;
+        //perkTime++;
+        perkManager.setPerkTime(perkManager.getPerkTime()+1);
+        perkTimeLabel->Caption =  PERK_DURATION-perkManager.getPerkTime()/*perkTime*/;
 
         if (!perkManager.isPerkOn()){
-                if(perkTime >= 2){
+                if(/*perkTime*/perkManager.getPerkTime() >= 2){
                         perkManager.turnPerkOn(perkShape, gameArea, perkTimeLabel);
                         perkTimer->Enabled = false;
                 }
         }
 
-        if (perkManager.getWhoHitPerk() != NULL && perkTime >= PERK_DURATION){
+        if (perkManager.getWhoHitPerk() != NULL && /*perkTime*/perkManager.getPerkTime() >= PERK_DURATION){
                 finishPerks();
         }
 }

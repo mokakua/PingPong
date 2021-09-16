@@ -22,8 +22,10 @@ vector <Perk> perks;
 bool perkOn;
 int pickedPerk;
 int perkSpeed;
+int perkTime;
 char whoHitPerk;
 bool isCannonBallOn;
+
 
 public:
 
@@ -36,6 +38,8 @@ void turnPerkOn(TShape* perkShape,TShape* gameArea, TLabel* perkTimeLabel);
 int getPickedPerkNumber();
 void perkHitAction(TShape* perkShape, TLabel* perkTimeLabel);
 int getPerkSpeed();
+void setPerkTime(int pTime);
+int getPerkTime();
 void changePerkDirectionIfHitWall(TShape* perkShape, TShape* gameArea);
 bool doesPerkHitWall(TShape* perkShape, TShape* gameArea);
 bool doesBallHitPerkShape(TShape* perkShape, TShape* ball);

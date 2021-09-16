@@ -76,7 +76,7 @@ private:	// User declarations
         const int MAX_SPEED_RATIO;
         float xSpeed;
         float ySpeed;
-        int perkTime;
+        //int perkTime;
         int cannonBallTime;
         const int PERK_DURATION;
         int keyRightUp;

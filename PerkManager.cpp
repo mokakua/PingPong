@@ -6,6 +6,7 @@ PerkManager::PerkManager(){
         perkOn = false;
         pickedPerk = 0;
         perkSpeed = 2;
+        perkTime = 0;
         whoHitPerk = NULL;
         Perk perk("Drunk Mode", "Changes opponent's paddle speed and steering", clRed, 10);
         perks.push_back(perk);
@@ -41,6 +42,14 @@ void PerkManager::turnPerkOn(TShape* perkShape,TShape* gameArea, TLabel* perkTim
 //---------------------------------------------------------------------------
 int PerkManager::getPickedPerkNumber(){
         return pickedPerk;
+}
+//---------------------------------------------------------------------------
+void PerkManager::setPerkTime(int pTime){
+        perkTime = pTime;
+}
+//---------------------------------------------------------------------------
+int PerkManager::getPerkTime(){
+        return perkTime;
 }
 //---------------------------------------------------------------------------
 void PerkManager::perkHitAction(TShape* perkShape, TLabel* perkTimeLabel){

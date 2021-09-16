@@ -112,9 +112,10 @@ void PerkManager::finishPerks(PaddleData *paddleLeftData, PaddleData *paddleRigh
 
         //cannonBall
         isCannonBallOn = false;
+        //TForm1::cannonTimer->Enabled = false;
         //cannonTimer->Enabled = false;
-        //rightPaddleSpeed = PADDLE_SPEED;
-        //leftPaddleSpeed = PADDLE_SPEED;
+        //paddleRightData->setPaddleSpeed(TForm1::PADDLE_SPEED);
+        //paddleLeftData->setPaddleSpeed(TForm1::PADDLE_SPEED);
 
 }
 //---------------------------------------------------------------------------
