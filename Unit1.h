@@ -58,9 +58,10 @@ __published:	// IDE-managed Components
         void __fastcall paddleLeftDownTimerTimer(TObject *Sender);
         void __fastcall startButtonClick(TObject *Sender);
         void __fastcall dalejButtonClick(TObject *Sender);
-        void __fastcall koniecButtonClick(TObject *Sender);
         void __fastcall perkTimerTimer(TObject *Sender);
         void __fastcall cannonTimerTimer(TObject *Sender);
+        void __fastcall FormClose(TObject *Sender, TCloseAction &Action);
+        void __fastcall koniecButtonClick(TObject *Sender);
 private:	// User declarations
 
         const int MIN_BALL_SPEED;
@@ -93,7 +94,6 @@ private:	// User declarations
         float calcBallSpeedRatio(TShape* paddle);
         bool doesBallHitPaddle(TShape* paddle);
         bool doesBallHitWall();
-        bool doesBallHitPerkShape();
         bool isFail();
         void pauseGameAfterFail();
         void timersOff();

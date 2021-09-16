@@ -23,6 +23,7 @@ bool perkOn;
 int pickedPerk;
 int perkSpeed;
 char whoHitPerk;
+bool isCannonBallOn;
 
 public:
 
@@ -41,7 +42,6 @@ bool doesBallHitPerkShape(TShape* perkShape, TShape* ball);
 void setWhoHitPerk(int xSpeed);
 char getWhoHitPerk();
 void finishPerks(PaddleData *paddleLeftData, PaddleData *paddleRightData);
-bool isCannonBallOn;
 bool getIsCannonBallOn();
 void turnCannonBallOn();
 void showPerksDescription(TShape* perkShape, TShape* perkShape1, TShape* perkShape2, TLabel* perkDescription, TLabel* perk1Description, TLabel* perk2Description);
