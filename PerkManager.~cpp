@@ -119,6 +119,14 @@ void PerkManager::perk1DrunkMode(PaddleData *paddleLeftData, PaddleData *paddleR
         }
 }
 //---------------------------------------------------------------------------
+void PerkManager::perk3Elongation(PaddleData *paddleLeftData, PaddleData *paddleRightData){
+        if(getWhoHitPerk() == 'r'){
+                (paddleRightData->getPaddleShape())->Height *=2;
+        }else if(getWhoHitPerk() == 'l'){
+                (paddleLeftData->getPaddleShape())->Height *=2;
+        }
+}
+//---------------------------------------------------------------------------
 void PerkManager::finishPerks(PaddleData *paddleLeftData, PaddleData *paddleRightData){
         pickedPerk = 0;
         perkOn = false;

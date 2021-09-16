@@ -1,6 +1,6 @@
 #include "PaddleData.h"
 
-PaddleData::PaddleData(TShape *paddleShape, int *paddleSpeed, int *keyUp, int *keyDown):
+PaddleData::PaddleData(TShape *paddleShape, int paddleSpeed, int keyUp, int keyDown):
 paddleShape(paddleShape), paddleSpeed(paddleSpeed), keyUp(keyUp), keyDown(keyDown)
 {}
 //---------------------------------------------------------------------------
@@ -8,27 +8,27 @@ TShape* PaddleData::getPaddleShape(){
 return this->paddleShape;
 }
 //---------------------------------------------------------------------------
-int* PaddleData::getPaddleSpeed(){
+int PaddleData::getPaddleSpeed(){
 return this->paddleSpeed;
 }
 //---------------------------------------------------------------------------
-int* PaddleData::getKeyUp(){
+int PaddleData::getKeyUp(){
 return this->keyUp;
 }
 //---------------------------------------------------------------------------
-int* PaddleData::getKeyDown(){
+int PaddleData::getKeyDown(){
 return this->keyDown;
 }
 //---------------------------------------------------------------------------
 void PaddleData::setPaddleSpeed(int paddleSpeed){
-*(this->paddleSpeed) = paddleSpeed;
+this->paddleSpeed = paddleSpeed;
 }
 //---------------------------------------------------------------------------
 void PaddleData::setKeyUp(int keyUp){
-*(this->keyUp) = keyUp;
+this->keyUp = keyUp;
 }
 //---------------------------------------------------------------------------
 void PaddleData::setKeyDown(int keyDown){
-*(this->keyDown) = keyDown;
+this->keyDown = keyDown;
 }
 //---------------------------------------------------------------------------

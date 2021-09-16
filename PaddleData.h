@@ -28,6 +28,7 @@ int getKeyDown();
 void setPaddleSpeed(int paddleSpeed);
 void setKeyUp(int keyUp);
 void setKeyDown(int keyDown);
+void swapKeys();
 
 
 

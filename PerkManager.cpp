@@ -105,15 +105,17 @@ char PerkManager::getWhoHitPerk(){
 void PerkManager::perk1DrunkMode(PaddleData *paddleLeftData, PaddleData *paddleRightData){
         int drunkMultiplier = 3;
         if(getWhoHitPerk() == 'l'){
-                int tempValue = paddleRightData->getKeyUp();
+                paddleRightData->swapKeys();
+                /*int tempValue = paddleRightData->getKeyUp();
                 paddleRightData->setKeyUp(paddleRightData->getKeyDown());
-                paddleRightData->setKeyDown(tempValue);
+                paddleRightData->setKeyDown(tempValue);*/
                 paddleRightData->setPaddleSpeed(drunkMultiplier * paddleRightData->getPaddleSpeed());
                 //rightPaddleSpeed *= drunkMultiplier;
         }else{
-                int tempValue = paddleLeftData->getKeyUp();
+                paddleLeftData->swapKeys();
+                /*int tempValue = paddleLeftData->getKeyUp();
                 paddleLeftData->setKeyUp(paddleLeftData->getKeyDown());
-                paddleLeftData->setKeyDown(tempValue);
+                paddleLeftData->setKeyDown(tempValue);*/
                 paddleLeftData->setPaddleSpeed(paddleLeftData->getPaddleSpeed()*drunkMultiplier);
                 //leftPaddleSpeed *= drunkMultiplier;
         }

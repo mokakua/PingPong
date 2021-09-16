@@ -32,3 +32,9 @@ void PaddleData::setKeyDown(int keyDown){
 this->keyDown = keyDown;
 }
 //---------------------------------------------------------------------------
+void PaddleData::swapKeys(){
+        int tempValue = keyUp;
+        keyUp = keyDown;
+        keyDown = tempValue;
+}
+//---------------------------------------------------------------------------
