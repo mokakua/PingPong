@@ -14,20 +14,21 @@ using namespace std;
 class PaddleData{
 
 TShape *paddleShape;
-int *paddleSpeed;
-int *keyUp;
-int *keyDown;
+int paddleSpeed;
+int keyUp;
+int keyDown;
 
 public:
 
-PaddleData(TShape *paddleShape, int *paddleSpeed, int *keyUp, int *keyDown);
+PaddleData(TShape *paddleShape, int paddleSpeed, const int keyUp, const int keyDown);
 TShape* getPaddleShape();
-int* getPaddleSpeed();
-int* getKeyUp();
-int* getKeyDown();
+int getPaddleSpeed();
+int getKeyUp();
+int getKeyDown();
 void setPaddleSpeed(int paddleSpeed);
 void setKeyUp(int keyUp);
 void setKeyDown(int keyDown);
+void swapKeys();
 
 
 

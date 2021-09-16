@@ -6,6 +6,7 @@ PerkManager::PerkManager(){
         perkOn = false;
         pickedPerk = 0;
         perkSpeed = 2;
+        perkTime = 0;
         whoHitPerk = NULL;
         Perk perk("Drunk Mode", "Changes opponent's paddle speed and steering", clRed, 10);
         perks.push_back(perk);
@@ -41,6 +42,14 @@ void PerkManager::turnPerkOn(TShape* perkShape,TShape* gameArea, TLabel* perkTim
 //---------------------------------------------------------------------------
 int PerkManager::getPickedPerkNumber(){
         return pickedPerk;
+}
+//---------------------------------------------------------------------------
+void PerkManager::setPerkTime(int pTime){
+        perkTime = pTime;
+}
+//---------------------------------------------------------------------------
+int PerkManager::getPerkTime(){
+        return perkTime;
 }
 //---------------------------------------------------------------------------
 void PerkManager::perkHitAction(TShape* perkShape, TLabel* perkTimeLabel){
@@ -93,16 +102,36 @@ char PerkManager::getWhoHitPerk(){
         return whoHitPerk;
 }
 //---------------------------------------------------------------------------
+void PerkManager::perk1DrunkMode(PaddleData *paddleLeftData, PaddleData *paddleRightData){
+        int drunkMultiplier = 3;
+        if(getWhoHitPerk() == 'l'){
+                paddleRightData->swapKeys();
+                paddleRightData->setPaddleSpeed(drunkMultiplier * paddleRightData->getPaddleSpeed());
+        }else{
+                paddleLeftData->swapKeys();
+                paddleLeftData->setPaddleSpeed(paddleLeftData->getPaddleSpeed()*drunkMultiplier);
+        }
+}
+//---------------------------------------------------------------------------
+void PerkManager::perk3Elongation(PaddleData *paddleLeftData, PaddleData *paddleRightData){
+        if(getWhoHitPerk() == 'r'){
+                (paddleRightData->getPaddleShape())->Height *=2;
+        }else if(getWhoHitPerk() == 'l'){
+                (paddleLeftData->getPaddleShape())->Height *=2;
+        }
+}
+//---------------------------------------------------------------------------
 void PerkManager::finishPerks(PaddleData *paddleLeftData, PaddleData *paddleRightData){
         pickedPerk = 0;
         perkOn = false;
         whoHitPerk = NULL;
+        perkTime = 0;
 
         //drunkMode
-        *(paddleRightData->getKeyUp()) = VK_UP;
-        *(paddleRightData->getKeyDown()) = VK_DOWN;
-        *(paddleLeftData->getKeyUp()) = 0x41;
-        *(paddleLeftData->getKeyDown()) = 0x5A;
+        paddleRightData->setKeyUp(TForm1::KEY_RIGHT_UP);
+        paddleRightData->setKeyDown(TForm1::KEY_RIGHT_DOWN);
+        paddleLeftData->setKeyUp(TForm1::KEY_LEFT_UP);
+        paddleLeftData->setKeyDown(TForm1::KEY_LEFT_DOWN);
         paddleRightData->setPaddleSpeed(TForm1::PADDLE_SPEED);
         paddleLeftData->setPaddleSpeed(TForm1::PADDLE_SPEED);
 
@@ -112,9 +141,10 @@ void PerkManager::finishPerks(PaddleData *paddleLeftData, PaddleData *paddleRigh
 
         //cannonBall
         isCannonBallOn = false;
+        //TForm1::cannonTimer->Enabled = false;
         //cannonTimer->Enabled = false;
-        //rightPaddleSpeed = PADDLE_SPEED;
-        //leftPaddleSpeed = PADDLE_SPEED;
+        //paddleRightData->setPaddleSpeed(TForm1::PADDLE_SPEED);
+        //paddleLeftData->setPaddleSpeed(TForm1::PADDLE_SPEED);
 
 }
 //---------------------------------------------------------------------------

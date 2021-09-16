@@ -22,7 +22,10 @@ vector <Perk> perks;
 bool perkOn;
 int pickedPerk;
 int perkSpeed;
+int perkTime;
 char whoHitPerk;
+bool isCannonBallOn;
+
 
 public:
 
@@ -35,13 +38,16 @@ void turnPerkOn(TShape* perkShape,TShape* gameArea, TLabel* perkTimeLabel);
 int getPickedPerkNumber();
 void perkHitAction(TShape* perkShape, TLabel* perkTimeLabel);
 int getPerkSpeed();
+void setPerkTime(int pTime);
+int getPerkTime();
 void changePerkDirectionIfHitWall(TShape* perkShape, TShape* gameArea);
 bool doesPerkHitWall(TShape* perkShape, TShape* gameArea);
 bool doesBallHitPerkShape(TShape* perkShape, TShape* ball);
 void setWhoHitPerk(int xSpeed);
 char getWhoHitPerk();
+void perk1DrunkMode(PaddleData *paddleLeftData, PaddleData *paddleRightData);
+void PerkManager::perk3Elongation(PaddleData *paddleLeftData, PaddleData *paddleRightData);
 void finishPerks(PaddleData *paddleLeftData, PaddleData *paddleRightData);
-bool isCannonBallOn;
 bool getIsCannonBallOn();
 void turnCannonBallOn();
 void showPerksDescription(TShape* perkShape, TShape* perkShape1, TShape* perkShape2, TLabel* perkDescription, TLabel* perk1Description, TLabel* perk2Description);
