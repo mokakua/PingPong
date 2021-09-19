@@ -12,6 +12,7 @@
 #include "PaddleData.h"
 #include <math.h>
 #include <MPlayer.hpp>
+#include "wave_resources.h"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {

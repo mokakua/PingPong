@@ -12,6 +12,7 @@
 #include "PaddleData.h"
 #include <math.h>
 #include <MPlayer.hpp>
+#include "wave_resources.h"
 //---------------------------------------------------------------------------
 class TForm1 : public TForm
 {
@@ -85,7 +86,7 @@ private:	// User declarations
         PaddleData *paddleLeftData;
         PaddleData *paddleRightData;
 
-        void swap (int& a, int& b);
+        //void swap (int& a, int& b);
         void setBallSpeed(float speedRatio);
         float calcBallSpeedRatio(TShape* paddle);
         bool doesBallHitPaddle(TShape* paddle);

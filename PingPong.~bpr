@@ -6,7 +6,7 @@
     <PROJECT value="PingPong.exe"/>
     <OBJFILES value="PingPong.obj Unit1.obj Perk.obj DrunkMode.obj CannonBall.obj 
       Elongation.obj PerkManager.obj PaddleData.obj"/>
-    <RESFILES value="PingPong.res"/>
+    <RESFILES value="PingPong.res Resource.res"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) Unit1.dfm"/>
     <LIBFILES value=""/>
@@ -52,6 +52,7 @@
       <FILE FILENAME="Elongation.cpp" FORMNAME="" UNITNAME="Elongation.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="PerkManager.cpp" FORMNAME="" UNITNAME="PerkManager" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="PaddleData.cpp" FORMNAME="" UNITNAME="PaddleData" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Resource.res" FORMNAME="" UNITNAME="Resource.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>
@@ -83,6 +84,22 @@ OriginalFilename=
 ProductName=
 ProductVersion=1.0.0.0
 Comments=
+
+[HistoryLists\hlIncludePath]
+Count=1
+Item0=$(BCB)\Projects;D:\Repos\PrzyszlyProgramista\PingPong;$(BCB)\include;$(BCB)\include\vcl
+
+[HistoryLists\hlLibraryPath]
+Count=1
+Item0=$(BCB)\Projects;D:\Repos\PrzyszlyProgramista\PingPong;$(BCB)\lib\obj;$(BCB)\lib
+
+[HistoryLists\hlDebugSourcePath]
+Count=1
+Item0=$(BCB)\source\vcl
+
+[HistoryLists\hlConditionals]
+Count=1
+Item0=_DEBUG
 
 [Debugging]
 DebugSourceDirs=$(BCB)\source\vcl
