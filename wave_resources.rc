@@ -1,0 +1,5 @@
+#include <wave_resources.h>
+
+IDR_WAVE1	WAVE	D:\Repos\PrzyszlyProgramista\PingPong\WAV\fail.wav
+IDR_WAVE2	WAVE	D:\Repos\PrzyszlyProgramista\PingPong\WAV\hit.wav
+IDR_WAVE3	WAVE	D:\Repos\PrzyszlyProgramista\PingPong\WAV\perk.wav

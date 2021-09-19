@@ -4,9 +4,9 @@
   <MACROS>
     <VERSION value="BCB.06.00"/>
     <PROJECT value="PingPong.exe"/>
-    <OBJFILES value="PingPong.obj Unit1.obj Perk.obj DrunkMode.obj CannonBall.obj 
-      Elongation.obj PerkManager.obj PaddleData.obj"/>
-    <RESFILES value="PingPong.res"/>
+    <OBJFILES value="PingPong.obj Perk.obj DrunkMode.obj CannonBall.obj Elongation.obj 
+      PerkManager.obj PaddleData.obj Unit1.obj"/>
+    <RESFILES value="PingPong.res wave_resources.res"/>
     <DEFFILE value=""/>
     <RESDEPEN value="$(RESFILES) Unit1.dfm"/>
     <LIBFILES value=""/>
@@ -45,13 +45,14 @@
   <FILELIST>
       <FILE FILENAME="PingPong.res" FORMNAME="" UNITNAME="PingPong.res" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="PingPong.cpp" FORMNAME="" UNITNAME="PingPong" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
-      <FILE FILENAME="Unit1.cpp" FORMNAME="Form1" UNITNAME="Unit1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Perk.cpp" FORMNAME="" UNITNAME="Perk" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="DrunkMode.cpp" FORMNAME="" UNITNAME="DrunkMode" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="CannonBall.cpp" FORMNAME="" UNITNAME="CannonBall.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="Elongation.cpp" FORMNAME="" UNITNAME="Elongation.cpp" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="PerkManager.cpp" FORMNAME="" UNITNAME="PerkManager" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
       <FILE FILENAME="PaddleData.cpp" FORMNAME="" UNITNAME="PaddleData" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="wave_resources.RES" FORMNAME="" UNITNAME="wave_resources.RES" CONTAINERID="ResTool" DESIGNCLASS="" LOCALCOMMAND=""/>
+      <FILE FILENAME="Unit1.cpp" FORMNAME="Form1" UNITNAME="Unit1" CONTAINERID="CCompiler" DESIGNCLASS="" LOCALCOMMAND=""/>
   </FILELIST>
   <BUILDTOOLS>
   </BUILDTOOLS>

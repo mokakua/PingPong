@@ -155,7 +155,8 @@ bool TForm1::isFail(){
 }
 //---------------------------------------------------------------------------
 void TForm1::pauseGameAfterFail(){
-        sndPlaySound("WAV/fail.wav",SND_ASYNC);
+
+        PlaySound(MAKEINTRESOURCE(IDR_WAVE1),GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
         timersOff();
         finishPerks();
         ball->Visible = false;
@@ -237,7 +238,7 @@ void TForm1::perkHitAction(){
         perkShape->Visible = false;
         perkManager.setPerkTime(0);
         perkTimer->Enabled = true;
-        sndPlaySound("WAV/perk.wav",SND_ASYNC);
+        PlaySound(MAKEINTRESOURCE(IDR_WAVE3),GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
         perkTimeLabel->Visible = true;
         perkTimeLabel->Caption = PERK_DURATION;
         switch (perkManager.getPickedPerkNumber()){
@@ -256,7 +257,7 @@ void TForm1::perkHitAction(){
 void TForm1::paddleHitAction(){
         if(xSpeed >0 && doesBallHitPaddle(paddleRightShape)){
                 ballHits++;
-                sndPlaySound("WAV/hit.wav",SND_ASYNC);
+                PlaySound(MAKEINTRESOURCE(IDR_WAVE2),GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
                 if(ballHits%hitsToSpeedIncrease==0 && ballHits>0 && ballSpeed<MAX_BALL_SPEED){
                         ballSpeed++;
                 }
@@ -269,7 +270,7 @@ void TForm1::paddleHitAction(){
 
         }else if (xSpeed <0 && doesBallHitPaddle(paddleLeftShape)){
                 ballHits++;
-                sndPlaySound("WAV/hit.wav",SND_ASYNC);
+                PlaySound(MAKEINTRESOURCE(IDR_WAVE2),GetModuleHandle(NULL), SND_RESOURCE | SND_ASYNC);
                 if(ballHits%hitsToSpeedIncrease==0 && ballHits>0 && ballSpeed<MAX_BALL_SPEED){
                         ballSpeed++;
                 }

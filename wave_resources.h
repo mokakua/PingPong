@@ -1,0 +1,3 @@
+#define IDR_WAVE1	1234
+#define IDR_WAVE2	1235
+#define IDR_WAVE3	1236
